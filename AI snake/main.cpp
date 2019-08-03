@@ -10,7 +10,7 @@ int main()
 	{
 		snake sn1(10,10,9,10,8,10,7,10,6,10,5,10);                //声明对象
 		system("cls");           //清屏
-		//system("color 3B");      //背景和字体颜色调整
+		system("color 3B");      //背景和字体颜色调整
 		make_frame();            //打印框架
 		sn1.display();            //显示蛇
 		show();                  //游戏开始
