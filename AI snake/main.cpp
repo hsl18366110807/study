@@ -8,9 +8,11 @@ int main()
 {
 	while (1)
 	{
-		snake sn1(10,10,9,10,8,10,7,10,6,10,5,10);                //声明对象
+		snake sn1(10, 10, 9, 10, 8, 10, 7, 10, 6, 10, 5, 10);                //声明对象
 		system("cls");           //清屏
-		system("color 3B");      //背景和字体颜色调整
+		system("color 3B");    //背景和字体颜色调整
+		myRand myrand;
+		myrand.srand();
 		make_frame();            //打印框架
 		sn1.display();            //显示蛇
 		show();                  //游戏开始
@@ -18,7 +20,7 @@ int main()
 		while (sn1.cheak())       //检查是否死亡
 		{
 			if (sn1.getstate() == "right") {
-			rp:	int dir = rand() % 3;
+			rp: int dir = myrand.rand() % 3;
 				switch (dir) {
 				case 0:
 					if (sn1.preCheakUpmove()) {
@@ -72,7 +74,7 @@ int main()
 				}
 			}
 			if (sn1.getstate() == "left") {
-			lp:	int dir = rand() % 3;
+			lp:	int dir = myrand.rand() % 3;
 				switch (dir) {
 				case 0:
 					if (sn1.preCheakUpmove()) {
@@ -125,9 +127,9 @@ int main()
 				default: break;
 				}
 			}
-	      	if (sn1.getstate() == "up")
+			if (sn1.getstate() == "up")
 			{
-			up:	int dir = rand() % 3;
+			up:	int dir = myrand.rand() % 3;
 				switch (dir) {
 				case 0:
 					if (sn1.preCheakRightmove()) {
@@ -182,7 +184,7 @@ int main()
 			}
 			if (sn1.getstate() == "down")
 			{
-		dp:	int dir = rand() % 3;
+			dp:	int dir = myrand.rand() % 3;
 				switch (dir) {
 				case 0:
 					if (sn1.preCheakRightmove()) {

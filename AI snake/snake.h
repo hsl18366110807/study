@@ -1,10 +1,12 @@
+#include <ctime>
+#include <iostream>
 struct Snake
 {
 	int x, y;
 };
 class snake {
 public:
-	snake(int x5,int y5,int x4,int y4,int x3,int y3,int x2,int y2,int x1,int y1,int x0,int y0) {  //æ„é€ å‡½æ•°
+	snake(int x5,int y5,int x4,int y4,int x3,int y3,int x2,int y2,int x1,int y1,int x0,int y0) {  //¹¹Ôìº¯Êı
 		length = 6;
 		s[5].x = x5;
 		s[5].y = y5;
@@ -22,8 +24,8 @@ public:
 		right = 1;
 	}
 	~snake(){}
-	void display();                                    //æ˜¾ç¤ºè›‡
-	void Rightmove();                                  //ä¸Šä¸‹å·¦å³ç§»åŠ¨è›‡
+	void display();                                    //ÏÔÊ¾Éß
+	void Rightmove();                                  //ÉÏÏÂ×óÓÒÒÆ¶¯Éß
 	void Leftmove();
 	void Upmove();
 	void Downmove();
@@ -33,16 +35,27 @@ public:
 	int preCheakUpmove();
 	int preCheakDownmove();
     std::string getstate();
-	int cheak();                                      //æ£€æŸ¥æ˜¯å¦æ’åˆ°å¢™æˆ–è€…è‡ªèº«
-	void creat_food();                                //äº§ç”Ÿå®ç‰©
-	int eat_food();                                   //åƒé£Ÿç‰©
+	int cheak();                                      //¼ì²éÊÇ·ñ×²µ½Ç½»òÕß×ÔÉí
+	void creat_food();                                //²úÉúÊµÎï
+	int eat_food();                                   //³ÔÊ³Îï
 private:
-	struct Snake s[100];                              //å®šä¹‰è›‡æœ€é•¿100
-	int length;                                       //å½“å‰è›‡çš„é•¿åº¦
-	int x3, y3;                                       //é£Ÿç‰©åæ ‡
-	int up, down, right, left;                        //è›‡çš„çŠ¶æ€
+	struct Snake s[100];                              //¶¨ÒåÉß×î³¤100
+	int length;                                       //µ±Ç°ÉßµÄ³¤¶È
+	int x3, y3;                                       //Ê³Îï×ø±ê
+	int up, down, right, left;                        //ÉßµÄ×´Ì¬
 
 };
-void make_frame();                                    //æ‰“å°æ¡†æ¶çš„å‡½æ•°
-void show();                                          //æ¸¸æˆå¼€å§‹å€’æ•°
-void gameover();                                      //æ¸¸æˆç»“æŸ
+void make_frame();                                    //´òÓ¡¿ò¼ÜµÄº¯Êı
+void show();                                          //ÓÎÏ·¿ªÊ¼µ¹Êı
+void gameover();                                      //ÓÎÏ·½áÊø
+class myRand {
+public:
+	unsigned int seed;
+	void srand(unsigned int s = static_cast<unsigned int> (time(NULL))) {
+		seed = s;
+	}
+	unsigned int rand() {
+		seed = (31 * seed + 13) % ((1 << 15) - 1);
+		return seed;
+	}
+};
