@@ -1,3 +1,4 @@
+![image](https://github.com/hsl18366110807/study-Git/blob/master/%E5%AE%9E%E7%8E%B0%E5%AE%B9%E5%99%A8/vector/photo.jpg)
 #include<iostream>
 #include"rand.h"
 #include"vectorr.h"
