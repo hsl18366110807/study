@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <malloc.h>
+#include <typeinfo>
 template<class T>
 class vectorr
 {
@@ -33,8 +34,8 @@ public:
 		}
 		else {
 			size_type n = capacity();
-			T* iter = reinterpret_cast<T*>(malloc(sizeof(T) * n*2));
-			iterator s = iter;
+			pointer iter = reinterpret_cast<T*>(malloc(sizeof(value_type) * n * 2));
+			pointer s = iter;
 			for (iterator it = start; it < finish; it++) {
 				*iter++ = *it;
 			}
@@ -47,7 +48,7 @@ public:
 	}
 	vectorr() :start(NULL), finish(NULL), end_of_storage(NULL) {};
 	vectorr(int n, T x) {
-		T* iter = reinterpret_cast<T*>( malloc(sizeof(T) * n));
+		pointer iter = reinterpret_cast<T*>( malloc(sizeof(T) * n));
 		start = iter;
 		for (int i = 0; i < n; i++) {
 			*iter++ = x;
@@ -58,16 +59,26 @@ public:
 	~vectorr()
 	{
 		iterator one = start;
+		if (_Get_pointer_type(one) != _Get_pointer_type( value_type))return;
 		for (; start < finish; start++) {
 			_Destroy(start);//析构掉该位置上的元素	
 		}
 		free(one);//只需要释放首地址即可
 	}
+	vectorr& operator=( const vectorr &v) {//赋值构造函数
+		if (this == &v) {
+			return *this;
+		}
+		start = v.start;
+		finish = v.finish;
+		end_of_storage = v.end_of_storage;
+		return *this;
+	}
 	void push_back(T x) {
 		if (finish != end_of_storage) *finish++ = x;
 		else {
 			size_type n = capacity();
-			iterator iter = new T[2*n*sizeof(T)];
+			pointer iter = reinterpret_cast<T*>(malloc(sizeof(value_type) * n * 2));
 			iterator s = iter;
 			for (iterator it = start; it < finish; it++) {
 				*iter++ = *it;
