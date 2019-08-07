@@ -33,7 +33,7 @@ public:
 		}
 		else {
 			size_type n = capacity();
-			iterator iter = new T[2 * n * sizeof(T)];
+			T* iter = reinterpret_cast<T*>(malloc(sizeof(T) * n*2));
 			iterator s = iter;
 			for (iterator it = start; it < finish; it++) {
 				*iter++ = *it;
