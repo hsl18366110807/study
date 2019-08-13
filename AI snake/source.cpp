@@ -1,5 +1,4 @@
-
-# include <iostream>
+﻿# include <iostream>
 # include <Windows.h>
 # include <time.h>
 # include "snake.h"
@@ -333,5 +332,5 @@ void gameover()              //游戏结束函数
 	gotoxy(hOut, 14, 5);
 	cout << "       GAME OVER!";
 	gotoxy(hOut, 14, 6);
-	cout << "PLAY AGAIN ? Y(yes) \ N(no)";
+	cout << "PLAY AGAIN ? Y(yes) \\ N(no)";
 }
