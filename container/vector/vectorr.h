@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <typeinfo>
+
 template<class T>
 class vectorr
 {
@@ -16,6 +17,7 @@ protected:
 	iterator finish;
 	iterator end_of_storage;
 public:
+	std::allocator<value_type> allocat;
 	iterator begin() { return start; }
 	iterator end() { return finish; }
 	size_type size() { return size_type(end() - begin()); }
@@ -46,9 +48,10 @@ public:
 			return insert(position, x);
 		}
 	}
+	//构造函数
 	vectorr() :start(NULL), finish(NULL), end_of_storage(NULL) {};
 	vectorr(int n, T x) {
-		pointer iter = reinterpret_cast<T*>( malloc(sizeof(T) * n));
+		pointer iter = reinterpret_cast<T*>( allocat.allocate(sizeof(value_type) * n));
 		start = iter;
 		for (int i = 0; i < n; i++) {
 			*iter++ = x;
@@ -56,14 +59,13 @@ public:
 		finish = iter;
 		end_of_storage = iter;
 	}
+	//析构函数
 	~vectorr()
 	{
-		iterator one = start;
-		if (_Get_pointer_type(one) != _Get_pointer_type( value_type))return;
-		for (; start < finish; start++) {
-			_Destroy(start);//析构掉该位置上的元素	
-		}
-		free(one);//只需要释放首地址即可
+		iterator end = end_of_storage;
+		iterator s = start;
+		size_type n = capacity();
+		allocat.deallocate(start,n);
 	}
 	vectorr& operator=( const vectorr &v) {//赋值构造函数
 		if (this == &v) {
@@ -78,11 +80,13 @@ public:
 		if (finish != end_of_storage) *finish++ = x;
 		else {
 			size_type n = capacity();
-			pointer iter = reinterpret_cast<T*>(malloc(sizeof(value_type) * n * 2));
+			pointer iter = reinterpret_cast<pointer>(allocat.allocate(sizeof(value_type) * n * 2));
 			iterator s = iter;
 			for (iterator it = start; it < finish; it++) {
 				*iter++ = *it;
+				allocat.destroy(it);
 			}
+			allocat.deallocate(start, capacity());
 			*iter = x;
 			start = s;
 			finish = iter+1;
@@ -91,7 +95,7 @@ public:
 	}
 	iterator erase(iterator pos) {
 		if (pos == finish - 1) {
-			_Destroy(pos);
+			allocat.destroy(pos);
 			--finish;
 			return pos - 1;
 		}
@@ -99,12 +103,12 @@ public:
 			*it = *(it + 1);
 		}
 		--finish;
-		_Destroy(finish);
+		allocat.destroy(finish);
 		return pos;
 	}
 	void clear() {
 		for (iterator it = finish-1; it >=start; it--) {
-			_Destroy(it);
+			allocat.destroy(it);
 		}
 		finish = start;
    }

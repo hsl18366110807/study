@@ -1,23 +1,22 @@
-#include<iostream>
-#include"rand.h"
-#include"vector.h"
+ï»¿#include<iostream>
+#include"vectorr.h"
 #include<vector>
 using namespace std;
 int main() {
-	vectorr<int> vec(3,0);
-	cout << "ÊÖ¶¯ÊµÏÖvector£¬Ààvectorr" << endl;
+	vectorr<int> vec(3, 0);
+	cout << "æ‰‹åŠ¨å®žçŽ°vectorï¼Œç±»vectorr" << endl;
 	for (int i = 0; i < vec.size(); i++) {
 		cout << vec[i] << endl;
 	}
-	cout << "²Ù×÷ÒÔÏÂ" << endl;
-	cout << "³õÊ¼»¯3¸ö0" << endl;
+	cout << "æ“ä½œä»¥ä¸‹" << endl;
+	cout << "åˆå§‹åŒ–3ä¸ª0" << endl;
 	cout << "size:" << vec.capacity();
-	cout<<"capacity:"<<vec.capacity();
+	cout << "capacity:" << vec.capacity();
 	cout << "empty:" << vec.empty();
 	cout << "   " << endl;
 	cout << "push_back 1,2,3,4" << endl;
 	cout << "vec.insert(vec.begin(), 0);" << endl;
-	cout << "Í·²¿²åÈë0,5,6" << endl;
+	cout << "å¤´éƒ¨æ’å…¥0,5,6" << endl;
 
 	vec.push_back(1);
 	vec.push_back(2);
@@ -35,10 +34,5 @@ int main() {
 	cout << "size:" << vec.size();
 	cout << "capacity:" << vec.capacity();
 	cout << "empty:" << vec.empty();
-	vectorr<int> s;
-	s = vec;
-	for (int i = 0; i < s.size(); i++) {
-		cout << s[i] << endl;
-	}
 	system("pause");
 }
