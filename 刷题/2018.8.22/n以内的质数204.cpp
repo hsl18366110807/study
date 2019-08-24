@@ -12,8 +12,8 @@ public:
 		int count = 1;
 		for (int i = 3; i < n; i++) {
 			int flag = 0;
-			if ((i & 1) == 0)continue;
-			for (int j = 3; j <= sqrt(i); j=j+2) {
+			if ((i & 1) == 0)continue;//偶数完，continue
+			for (int j = 3; j <= sqrt(i); j=j+2) {//j增加到i的平方根即可
 				if (i % j == 0) {
 					flag = 1;
 					break;
