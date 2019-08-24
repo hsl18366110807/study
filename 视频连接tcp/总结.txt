@@ -30,3 +30,14 @@ connect  ´´½¨Ì×½Ó×Öºó£¬¸ú·þÎñÆ÷½¨Á¢Ò»¸ö»î¶¯Á¬½Ó¡£Ò»µ©½¨Á¢Á¬½Ó£¬¿Í»§¾Í¿ÉÒÔÓÃÕâ¸öÁ
 recv      Ì×½Ó×Ö£¬»º³åÇøµØÖ·£¬»º³åÇøµÄ³¤¶È£¬½ÓÊÕÎ»±êÖ¾¡£
 closesocket    ÒýÓÃ¼ÆÊý¼õÒ»£¬×îºóÊÍ·Å¡£
 WSACleanupÊÍ·ÅËùÓÐÊý¾Ý½á¹¹ºÍÌ×½Ó×ÖµÄ°ó¶¨
+
+
+*********************************************************
+ÊÓÆµ´«ÊäµÄ¹ý³Ì
+Ê×ÏÈ»·¾³ÊÇopencv£¬µ÷ÓÃvideocapture À´»ñÈ¡Í¼Ïñ£¬frameÍ¼Æ¬
+È»ºóÊÇÍ¼Æ¬×îÖÕ×ª»»µ½ÁË×Ö·ûÊý×éÖÐÈ¥¡£image.ptr<uchar>(i+num1);
+¿í640¸ß480µÄÍ¼Æ¬
+×Ô¼º¶¨ÒåÁËÒ»¸ö½á¹¹Ìå£¬ÊÇsentbufÀ´´æÊý¾ÝµÄ¡£Ã¿´Î´«¶¼·Ö³É32¸ö°üÀ´´«Êý×é¡£
+Ã¿´Î´«Íê¶¼ÓÐÒ»¸ö±êÖ¾Î»flag data.flag=2;¼´Îª´«ËÍÍê¡£
+½ÓÊÕÒ²ÊÇÓÃÅÐ¶ÏÈç¹ûflag==2£¬È»ºóÅÐ¶Ï¼ÆÊýÆ÷ÊÇ·ñÊÇ33£¬À´ÅÐ¶ÏÍ¼Æ¬ÊÇ·ñ´«Íê¡£µ÷ÓÃimshowÀ´Õ¹Ê¾Í¼Æ¬
+
