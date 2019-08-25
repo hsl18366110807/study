@@ -5,7 +5,7 @@ using namespace std;
 /////////////////////
 //分割字符串
 typedef vector<string> stringlist;
-///根据字母来分割字符串
+//根据字母来分割字符串
 stringlist splitstr(const string& str, char ch) {
 	string substr;
 	stringlist li;
@@ -21,7 +21,7 @@ stringlist splitstr(const string& str, char ch) {
 	if (!substr.empty()) li.push_back(substr);
 	return li;
 }
-///根据字符串来分割
+//根据字符串来分割
 stringlist splitstr(const std::string& str, const std::string& pattern)
 {
 	stringlist  li;

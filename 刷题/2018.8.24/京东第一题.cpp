@@ -4,7 +4,7 @@
 using namespace std;
 //京东第一题
 //ac了27%，气炸了
-//现在ac了，这道题自己的边界做的很好
+//现在ac了，这道题自己的边界做的不好
 class Solution {
 public:
 	int getcount(vector<int> vec){
