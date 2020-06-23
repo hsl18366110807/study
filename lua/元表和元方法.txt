@@ -1,0 +1,7 @@
+__index vs __newindex 
+ipairs vs pairs 
+__add __del 算术运算的元方法
+print(t)调用t的__tostring 元方法
+所有字符串都有一个元表
+如果__metatable写死的话，无法更改元表
+利用元表可以设置默认值，可以创建只读表
