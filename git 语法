@@ -6,12 +6,15 @@ git 语法
 本地仓库 -> 远程仓库 git push origin/master
 远程仓库 -> 本地仓库 git fetch
 本地仓库 -> 工作目录 git merge origin/master
+
 更新 
 远程仓库 -> 工作目录 git pull
 git clone 
+
 冲突解决
 本地仓库 -> 工作目录 git checkout head .
 git pull -> 解决
+
 工作目录 -> 缓存区 git stash
 git pull   git stash pop 修改冲突 git add git commit git push 
 
