@@ -22,7 +22,7 @@ using namespace std;
         return one_ok_;
     });
     // printSecond() outputs "second". Do not change or remove this line.
-  cout<<"_B";
+      cout<<"_B";
     two_ok_ = true;
     cond_.notify_all();
     }
