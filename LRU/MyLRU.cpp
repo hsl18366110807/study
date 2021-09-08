@@ -3,7 +3,6 @@ class MyLRU
 public:
 	MyLRU();
 	~MyLRU();
-	
 	int IsShortOfPage(int v);
 	void SetPageCount(int n);
 	float HitPercent();
@@ -19,7 +18,6 @@ private:
 
 MyLRU::MyLRU()
 {
-	//size = 50;
 	num = 0, success = 0, fail = 0;
 	head = new DoubleListNode(-1);
 	tail = head;
