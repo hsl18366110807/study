@@ -1,1 +1,1 @@
-# study-Git
+# study
