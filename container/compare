@@ -1,0 +1,13 @@
+vector deque list set/map unordered_set/unordered_map  heap 
+1 vector size capcity push_back vector<int>().swap(vec);
+2 deque push_front push_back  data struction, sort is horrible,
+3 list has its own sort
+4 set  unordered_set/map RB-tree Olgn, hash_table O(1) 
+    vector + RB-tree 定位到哪个桶然后查找。
+5 stack and queue 是 deque adaptor 没有 iterator
+6 heap 可以由一个数组实现，堆是无序的
+    大根堆， 最小的n个元素
+    小根堆， 最大的n个元素
+    堆排序 nlgn
+7 排行榜的实现 有序链表 都是 O(n)的时间复杂度
+ 
