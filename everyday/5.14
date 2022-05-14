@@ -1,0 +1,45 @@
+1. sds 简单动态字符串
+    struct{
+        int len;
+        int alloc;
+        char data[];
+    }
+2. string类型
+       sdshdr5{
+         unsigned char flags;
+         char buf[];
+        }
+       sdshdr8{
+         uint8_t len;
+         uint8_t alloc;
+         unsigned char flags;
+         char buf[];
+       }
+   sds 优点:
+       1. 防止字符串copy的时候内存不够
+       2. 预分配和惰性释放，对字符串修改的时候防止多次申请释放内存，copy字符串。
+       3. 常数时间内获得字符串的长度
+       4. 二进制安全
+       5. 保留C字符串的接口函数。
+       6.encoding 为int，embstr, raw,int 超过20位就是embstr了，embstr超过44位就变成raw了。
+3. list
+    1.encoding quicklist
+    2.双端链表 支持左右两边的push和pop，消息队列可以用list实现。
+    3.底层实现是listpack存储
+    4.listpack的结构，与原来ziplist的比较
+4. set
+    1.encoding 有intset 和 hashtable两种
+    2.intset是限于int，或者字符个数超过一定数量后改为hashtable编码
+    3.set是在intset编码的时候是有序的自动排序，插入int时也是采用二分法查找位置来进行插入。
+    4.当到达一定条件的时候编码方式为hashtable了，元素就没有顺序了。
+    5.hashtable的结构就是dict，维护就是rehash那一套。
+5. hash
+    1.encoding 也分为ziplist 和 hashtable两种
+    2.当value字符个数超过64的时候编码方式编程hashtable.
+    3.ziplist其实底层还是listpack
+6. zset有序集合
+    1.encoding ziplist 和 skiplist两种
+    2.当value字符个数超过64的时候编码方式编程skiplist,或者当数量超过一定数值时也编程skiplist
+    3.skiplist结构和算法，插入和删除的理解
+    4.对skiplistnode的level的理解，span的理解。
+

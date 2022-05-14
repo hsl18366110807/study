@@ -1,0 +1,20 @@
+1. vim 多行注释 删除多行注释
+    ctrl+v I , ctrl+v x/d
+2. gdb命令
+    1> 运行命令
+        run, continue, step, next, quit,后面是不熟悉的 call, util, finish
+        until：当你厌倦了在一个循环体内单步跟踪时，这个命令可以运行程序直到退出循环体。
+        until+行号： 运行至某行，不仅仅用来跳出循环
+        finish： 运行程序，直到当前函数完成返回，并打印函数返回时的堆栈地址和返回值及参数值等信息。
+        call 函数(参数)：调用程序中可见的函数，并传递“参数”，如：call gdb_test(55)
+    2> 查看命令
+        list, print, watch, break,delete,info breakpoints以下为不熟悉的
+        b fn1 if a＞b：条件断点设置
+        break func（break缩写为b）：在函数func()的入口处设置断点，如：break cb_button
+        disable 断点号n：暂停第n个断点
+        enable 断点号n：开启第n个断点
+        clear 行号n：清除第n行的断点
+   3>运行时的信息
+        backtrace, stack, frame, info stack, info 这个命令很重要
+   4>窗口信息
+        layout, layout regs, layout src ,layout asm, layout split
