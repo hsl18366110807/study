@@ -42,4 +42,5 @@
     2.当value字符个数超过64的时候编码方式编程skiplist,或者当数量超过一定数值时也编程skiplist
     3.skiplist结构和算法，插入和删除的理解
     4.对skiplistnode的level的理解，span的理解。
-
+7. 双周赛
+    1. 找到一个数字的k美丽值

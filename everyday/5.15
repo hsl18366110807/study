@@ -1,0 +1,7 @@
+1. for循环内用到的变量可以在for括号内声明，代码更加有可读性。
+2. 滑动窗口的思想
+3. substr函数又忘记了
+4. 消息队列
+    redis中用到的是subscribe 订阅 和 publish 发布的应用
+    subscribe可以订阅多个channel，publish channel msg.
+. 

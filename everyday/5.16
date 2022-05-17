@@ -1,0 +1,33 @@
+1.redis的消息队列
+    subscribe可以订阅多个channel，publish 可以发布消息
+    1. publish channel msg
+    2. subscribe channel ..
+    3. type.serverPubSubChannels 是一个dict
+       channel,list 作为key,value存入serverPubSubChannels中去，list是一个链表，存订阅的客户端client
+    4. publish channel msg. 还是通过serverPubSubChannels找到client 然后传入 client->ptr中去
+    5.相关api:
+   subscribe相关api：
+        void subscribeCommand(client *c)  
+        int pubsubSubscribeChannel(client *c, robj *channel, pubsubtype type)
+        list *listAddNodeTail(list *list, void *value)
+        void addReplyPubsubSubscribed(client *c, robj *channel, pubsubtype type) 
+    void addReply(client *c, robj *obj)
+     _addReplyToBufferOrList(c,obj->ptr,sdslen(obj->ptr));
+  publish相关api:
+        void publishCommand(client *c)
+       pubsubPublishMessageAndPropagateToCluster(channel, msg, 0)
+        int pubsubPublishMessageInternal(robj *channel, robj *message, pubsubtype type) 
+        通过list找到相应的client然后
+        void addReplyPubsubMessage(client *c, robj *channel, robj *msg)
+        底层调用addReply来给client->ptr传robj。
+    6.网络层api：
+        readQueryFromClient->type.read->connRead->connSocketRead
+        writeToClient->_writeToClient->connWrite->connSocketWrite
+    7.redis main函数中的while循环
+        main->InitServerLast->initThreadedIO->IOThreadMain->while(1)->writeToClient和readQueryFromClient
+    8.实现细节：
+        1.遍历list中，人家用的方法是起一个名子ListIter然后封装来node和方向，就很清晰，看着也很明确
+        2. 网络底层函数判断buf是否满了
+        3，此外client 还有pos等游标来表示buf的状态。
+        
+        
