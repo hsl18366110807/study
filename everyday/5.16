@@ -29,5 +29,6 @@
         1.遍历list中，人家用的方法是起一个名子ListIter然后封装来node和方向，就很清晰，看着也很明确
         2. 网络底层函数判断buf是否满了
         3，此外client 还有pos等游标来表示buf的状态。
-        
+    9 vim忘记小技巧： U撤销 Control+R 撤销U
+      vimrc中[C-R] 代表control+R    
         

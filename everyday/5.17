@@ -1,0 +1,9 @@
+1. jump game II    
+    感觉这个题有bug，它默认为无论从哪个点出发都可以到达终点。
+    所以只要算出在下一跳范围内的最大长度点，作为下一跳点即可。
+2.  Best Time to Buy and Sell Stock
+    就是一个分情况讨论的问题，在遍历的每一天算出min_val 和 max_profit即可
+3. Best Time to Buy and Sell Stock II
+    情况比2稍微复杂一点，但是也是分析好如果当天的val<min_val和val>min_val以及tmp_profit>profit时应该做出哪些决策即可，还是贪心的算法，找到最优的办法即可。
+4.  Longest Substring Without Repeating Characters
+    滑动窗口的思想：优点是
