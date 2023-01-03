@@ -4,4 +4,3 @@ lua
 redis
 sql
 网络
-delphi
