@@ -1,12 +1,12 @@
-ï»¿# include <iostream>
+# include <iostream>
 # include <Windows.h>
 # include <time.h>
 # include "snake.h"
 # define MaxLen 20
 # define MaxWen 30
 using namespace std;
-HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);  //è·å–å¥æŸ„
-void gotoxy(HANDLE hOut, int x, int y)          //è¾“å‡ºä½ç½®çš„å‡½æ•°
+HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);  //»ñÈ¡¾ä±ú
+void gotoxy(HANDLE hOut, int x, int y)          //Êä³öÎ»ÖÃµÄº¯Êı
 {
 	COORD pos;
 	pos.X = x;
@@ -14,16 +14,16 @@ void gotoxy(HANDLE hOut, int x, int y)          //è¾“å‡ºä½ç½®çš„å‡½æ•°
 	SetConsoleCursorPosition(hOut, pos);
 }
 
-void snake::display()                       //æ‰“å°è›‡èº«
+void snake::display()                       //´òÓ¡ÉßÉí
 {
 	for (int i = length - 1; i >= 0; i--)
 	{
-		if (i == length - 1)               //æ‰“å°è›‡å¤´
+		if (i == length - 1)               //´òÓ¡ÉßÍ·
 		{
 			gotoxy(hOut, s[i].x, s[i].y);
 			cout << '&';
 		}
-		else                               //æ‰“å°è›‡èº«
+		else                               //´òÓ¡ÉßÉí
 		{
 			gotoxy(hOut, s[i].x, s[i].y);
 			cout << '*';
@@ -31,84 +31,84 @@ void snake::display()                       //æ‰“å°è›‡èº«
 	}
 	gotoxy(hOut, 0, 22);
 }
-void snake::Rightmove()                  //å³ç§»
+void snake::Rightmove()                  //ÓÒÒÆ
 {
 	right = 1; up = down = left = 0;
 	int x1, x2, y1, y2;
 	x1 = x2 = s[length - 1].x;
 	y1 = y2 = s[length - 1].y;
-	s[length - 1].x++;                        //è›‡å¤´xåæ ‡è‡ªå¢
-	for (int i = length - 2; i >= 0; i--)     //é™¤äº†è›‡å¤´ï¼Œå…¶ä»–çš„ç»“ç‚¹éƒ½ç­‰äºå®ƒçš„ä¸Šä¸€ä¸ªç»“ç‚¹çš„åæ ‡
+	s[length - 1].x++;                        //ÉßÍ·x×ø±ê×ÔÔö
+	for (int i = length - 2; i >= 0; i--)     //³ıÁËÉßÍ·£¬ÆäËûµÄ½áµã¶¼µÈÓÚËüµÄÉÏÒ»¸ö½áµãµÄ×ø±ê
 	{
 		x2 = s[i].x; y2 = s[i].y;
 		s[i].x = x1; s[i].y = y1;
 		x1 = x2; y1 = y2;
 	}
-	gotoxy(hOut, x2, y2);            //æ¶ˆé™¤è›‡ç§»åŠ¨é—ç•™çš„ â€˜*â€™
+	gotoxy(hOut, x2, y2);            //Ïû³ıÉßÒÆ¶¯ÒÅÁôµÄ ¡®*¡¯
 	cout << ' ';
 }
-void snake::Leftmove()               //å·¦ç§»
+void snake::Leftmove()               //×óÒÆ
 {
 	left = 1; right = up = down = 0;
 	int x1, x2, y1, y2;
 	x1 = x2 = s[length - 1].x;
 	y1 = y2 = s[length - 1].y;
-	s[length - 1].x--;                        //åŒä¸Š
+	s[length - 1].x--;                        //Í¬ÉÏ
 	for (int i = length - 2; i >= 0; i--)
 	{
 		x2 = s[i].x; y2 = s[i].y;
 		s[i].x = x1; s[i].y = y1;
 		x1 = x2; y1 = y2;
 	}
-	gotoxy(hOut, x2, y2);         //åŒä¸Š
+	gotoxy(hOut, x2, y2);         //Í¬ÉÏ
 	cout << ' ';
 }
-void snake::Downmove()            //ä¸‹ç§»
+void snake::Downmove()            //ÏÂÒÆ
 {
 	down = 1; right = up = left = 0;
 	int x1, x2, y1, y2;
 	x1 = x2 = s[length - 1].x;
 	y1 = y2 = s[length - 1].y;
-	s[length - 1].y++;                        //åŒä¸Š
+	s[length - 1].y++;                        //Í¬ÉÏ
 	for (int i = length - 2; i >= 0; i--)
 	{
 		x2 = s[i].x; y2 = s[i].y;
 		s[i].x = x1; s[i].y = y1;
 		x1 = x2; y1 = y2;
 	}
-	gotoxy(hOut, x2, y2);         //åŒä¸Š
+	gotoxy(hOut, x2, y2);         //Í¬ÉÏ
 	cout << ' ';
 }
-void snake::Upmove()              //ä¸Šç§»
+void snake::Upmove()              //ÉÏÒÆ
 {
 	up = 1; down = right = left = 0;
 	int x1, x2, y1, y2;
 	x1 = x2 = s[length - 1].x;
 	y1 = y2 = s[length - 1].y;
-	s[length - 1].y--;                      //åŒä¸Š
+	s[length - 1].y--;                      //Í¬ÉÏ
 	for (int i = length - 2; i >= 0; i--)
 	{
 		x2 = s[i].x; y2 = s[i].y;
 		s[i].x = x1; s[i].y = y1;
 		x1 = x2; y1 = y2;
 	}
-	gotoxy(hOut, x2, y2);        //åŒä¸Š
+	gotoxy(hOut, x2, y2);        //Í¬ÉÏ
 	cout << ' ';
 }
 int snake::cheak()
 {
 	int flag = 0;
-	for (int i = length - 2; i >= 0; i--)         //æ˜¯å¦æ’åˆ°è‡ªèº«
+	for (int i = length - 2; i >= 0; i--)         //ÊÇ·ñ×²µ½×ÔÉí
 	{
 		if (s[i].x == s[length - 1].x && s[i].y == s[length - 1].y)
 		{
-			flag = 1;     //æ˜¯ï¼Œæ ‡è¯†ç¬¦ä¸º1
+			flag = 1;     //ÊÇ£¬±êÊ¶·ûÎª1
 			break;
 		}
 	}
 	if (flag == 1 || (s[length - 1].x >= 30 + 1 || s[length - 1].x < 4) || (s[length - 1].y <= 1 || s[length - 1].y >= 20))
 	{
-		return 0;         //æ£€æµ‹æ˜¯å¦æ’è‡ªèº«ï¼Œæˆ–è€…æ’å¢™
+		return 0;         //¼ì²âÊÇ·ñ×²×ÔÉí£¬»òÕß×²Ç½
 	}
 	else
 	{
@@ -120,17 +120,17 @@ int snake::preCheakRightmove()
 	int x1 = s[length - 1].x + 1;
 	int y1 = s[length - 1].y;
 	int flag = 0;
-	for (int i = length - 2; i >= 0; i--)         //æ˜¯å¦æ’åˆ°è‡ªèº«
+	for (int i = length - 2; i >= 0; i--)         //ÊÇ·ñ×²µ½×ÔÉí
 	{
 		if (s[i].x == x1 && s[i].y == y1)
 		{
-			flag = 1;     //æ˜¯ï¼Œæ ‡è¯†ç¬¦ä¸º1
+			flag = 1;     //ÊÇ£¬±êÊ¶·ûÎª1
 			break;
 		}
 	}
-	if (flag == 1 || (x1 >= 30 + 1 || x1 < 4) || (y1<= 1 || y1 >= 20))
+	if (flag == 1 || (x1 >= 30 + 1 || x1 < 4) || (y1 <= 1 || y1 >= 20))
 	{
-		return 0;         //æ£€æµ‹æ˜¯å¦æ’è‡ªèº«ï¼Œæˆ–è€…æ’å¢™
+		return 0;         //¼ì²âÊÇ·ñ×²×ÔÉí£¬»òÕß×²Ç½
 	}
 	else
 	{
@@ -142,17 +142,17 @@ int snake::preCheakLeftmove()
 	int x1 = s[length - 1].x - 1;
 	int y1 = s[length - 1].y;
 	int flag = 0;
-	for (int i = length - 2; i >= 0; i--)         //æ˜¯å¦æ’åˆ°è‡ªèº«
+	for (int i = length - 2; i >= 0; i--)         //ÊÇ·ñ×²µ½×ÔÉí
 	{
 		if (s[i].x == x1 && s[i].y == y1)
 		{
-			flag = 1;     //æ˜¯ï¼Œæ ‡è¯†ç¬¦ä¸º1
+			flag = 1;     //ÊÇ£¬±êÊ¶·ûÎª1
 			break;
 		}
 	}
 	if (flag == 1 || (x1 >= 30 + 1 || x1 < 4) || (y1 <= 1 || y1 >= 20))
 	{
-		return 0;         //æ£€æµ‹æ˜¯å¦æ’è‡ªèº«ï¼Œæˆ–è€…æ’å¢™
+		return 0;         //¼ì²âÊÇ·ñ×²×ÔÉí£¬»òÕß×²Ç½
 	}
 	else
 	{
@@ -164,17 +164,17 @@ int snake::preCheakDownmove()
 	int x1 = s[length - 1].x;
 	int y1 = s[length - 1].y + 1;
 	int flag = 0;
-	for (int i = length - 2; i >= 0; i--)         //æ˜¯å¦æ’åˆ°è‡ªèº«
+	for (int i = length - 2; i >= 0; i--)         //ÊÇ·ñ×²µ½×ÔÉí
 	{
 		if (s[i].x == x1 && s[i].y == y1)
 		{
-			flag = 1;     //æ˜¯ï¼Œæ ‡è¯†ç¬¦ä¸º1
+			flag = 1;     //ÊÇ£¬±êÊ¶·ûÎª1
 			break;
 		}
 	}
 	if (flag == 1 || (x1 >= 30 + 1 || x1 < 4) || (y1 <= 1 || y1 >= 20))
 	{
-		return 0;         //æ£€æµ‹æ˜¯å¦æ’è‡ªèº«ï¼Œæˆ–è€…æ’å¢™
+		return 0;         //¼ì²âÊÇ·ñ×²×ÔÉí£¬»òÕß×²Ç½
 	}
 	else
 	{
@@ -186,33 +186,33 @@ int snake::preCheakUpmove()
 	int x1 = s[length - 1].x;
 	int y1 = s[length - 1].y - 1;
 	int flag = 0;
-	for (int i = length - 2; i >= 0; i--)         //æ˜¯å¦æ’åˆ°è‡ªèº«
+	for (int i = length - 2; i >= 0; i--)         //ÊÇ·ñ×²µ½×ÔÉí
 	{
 		if (s[i].x == x1 && s[i].y == y1)
 		{
-			flag = 1;     //æ˜¯ï¼Œæ ‡è¯†ç¬¦ä¸º1
+			flag = 1;     //ÊÇ£¬±êÊ¶·ûÎª1
 			break;
 		}
 	}
 	if (flag == 1 || (x1 >= 30 + 1 || x1 < 4) || (y1 <= 1 || y1 >= 20))
 	{
-		return 0;         //æ£€æµ‹æ˜¯å¦æ’è‡ªèº«ï¼Œæˆ–è€…æ’å¢™
+		return 0;         //¼ì²âÊÇ·ñ×²×ÔÉí£¬»òÕß×²Ç½
 	}
 	else
 	{
 		return 1;
 	}
 }
-void snake::creat_food()          //äº§ç”Ÿé£Ÿç‰©åæ ‡
+void snake::creat_food()          //²úÉúÊ³Îï×ø±ê
 {
 xy:	x3 = (rand() % (25)) + 3;
 	y3 = (rand() % (17)) + 2;
-	for (int i = length - 1; i >= 0; i--)   //æ£€æŸ¥é£Ÿç‰©æ˜¯å¦åœ¨è›‡èº«ä¸Š
+	for (int i = length - 1; i >= 0; i--)   //¼ì²éÊ³ÎïÊÇ·ñÔÚÉßÉíÉÏ
 	{
-		if (s[i].x == x3 && s[i].y == y3)    //æ˜¯å°±é‡æ–°äº§ç”Ÿé£Ÿç‰©åæ ‡
+		if (s[i].x == x3 && s[i].y == y3)    //ÊÇ¾ÍÖØĞÂ²úÉúÊ³Îï×ø±ê
 			goto xy;
 	}
-	gotoxy(hOut, x3, y3);       //æ˜¾ç¤ºé£Ÿç‰©
+	gotoxy(hOut, x3, y3);       //ÏÔÊ¾Ê³Îï
 	cout << '*';
 }
 string snake::getstate()
@@ -234,29 +234,29 @@ string snake::getstate()
 }
 int snake::eat_food()
 {
-	if (s[length - 1].x == x3 && s[length - 1].y == y3)   //è›‡å¤´ç¢°åˆ°é£Ÿç‰©
+	if (s[length - 1].x == x3 && s[length - 1].y == y3)   //ÉßÍ·Åöµ½Ê³Îï
 	{
-		if (up == 1)                    //å¦‚æœè›‡æ˜¯åœ¨ä¸Šç§»ï¼Œå¢åŠ ä¸€ä¸ªç»“ç‚¹ï¼Œä¸ºè›‡å¤´çš„ä¸Šä¸€ä¸ªç»“ç‚¹
+		if (up == 1)                    //Èç¹ûÉßÊÇÔÚÉÏÒÆ£¬Ôö¼ÓÒ»¸ö½áµã£¬ÎªÉßÍ·µÄÉÏÒ»¸ö½áµã
 		{
 			s[length].x = x3;
 			s[length].y = y3 - 1;
 		}
-		else if (down == 1)             //åŒä¸Š
+		else if (down == 1)             //Í¬ÉÏ
 		{
 			s[length].x = x3;
 			s[length].y = y3 + 1;
 		}
-		else if (right == 1)            //åŒä¸Š
+		else if (right == 1)            //Í¬ÉÏ
 		{
 			s[length].x = x3 + 1;
 			s[length].y = y3;
 		}
-		else if (left == 1)             //åŒä¸Š
+		else if (left == 1)             //Í¬ÉÏ
 		{
 			s[length].x = x3 - 1;
 			s[length].y = y3;
 		}
-		length++;                       //è›‡é•¿åŠ 1
+		length++;                       //Éß³¤¼Ó1
 		return 1;
 	}
 	else
@@ -264,18 +264,18 @@ int snake::eat_food()
 }
 void snake::showhead() {
 	gotoxy(hOut, 35, 9);
-	cout <<'('<< s[length - 1].x <<','<< s[length - 1].y<<')';
+	cout << '(' << s[length - 1].x << ',' << s[length - 1].y << ')';
 	if (s[length - 1].y < 10) {
 		gotoxy(hOut, 41, 9);
 		cout << ' ';
 	}
 	gotoxy(hOut, 0, 22);
 }
-void make_frame()                      //æ‰“å°æ¡†æ¶å‡½æ•°
+void make_frame()                      //´òÓ¡¿ò¼Üº¯Êı
 {
-	cout << "            è´ªåƒè›‡æ¸¸æˆ" << endl;
+	cout << "            Ì°³ÔÉßÓÎÏ·" << endl;
 	gotoxy(hOut, 2, 1);
-	cout << "â•”";
+	cout << "¨X";
 	for (int i = 4; i < 2 + MaxWen; i++)
 	{
 		gotoxy(hOut, i, 1);
@@ -284,35 +284,35 @@ void make_frame()                      //æ‰“å°æ¡†æ¶å‡½æ•°
 	for (int i = 2; i < MaxLen; i++)
 	{
 		gotoxy(hOut, 2, i);
-		printf("â•‘");
+		printf("¨U");
 	}
 	gotoxy(hOut, 2 + MaxWen, 1);
-	printf("â•—");
+	printf("¨[");
 	for (int i = 2; i < MaxLen; i++)
 	{
 		gotoxy(hOut, 2 + MaxWen, i);
-		printf("â•‘");
+		printf("¨U");
 	}
 	gotoxy(hOut, 2, MaxLen);
-	printf("â•š");
+	printf("¨^");
 	gotoxy(hOut, 2 + MaxWen, MaxLen);
-	printf("â•");
+	printf("¨a");
 	for (int i = 4; i < 2 + MaxWen; i++)
 	{
 		gotoxy(hOut, i, MaxLen);
 		printf("=");
 	}
 }
-void show()                //æ˜¾ç¤ºæ“ä½œæ–¹æ³•å’Œæ¸¸æˆå¼€å§‹å€’è®¡æ—¶
+void show()                //ÏÔÊ¾²Ù×÷·½·¨ºÍÓÎÏ·¿ªÊ¼µ¹¼ÆÊ±
 {
 	gotoxy(hOut, 35, 5);
-	cout << "â†‘:" << 'w';
+	cout << "¡ü:" << 'w';
 	gotoxy(hOut, 35, 6);
-	cout << "â†:" << 'a';
+	cout << "¡û:" << 'a';
 	gotoxy(hOut, 35, 7);
-	cout << "â†“:" << 's';
+	cout << "¡ı:" << 's';
 	gotoxy(hOut, 35, 8);
-	cout << "â†’:" << 'd';
+	cout << "¡ú:" << 'd';
 	gotoxy(hOut, 16, 5);
 	cout << '3';
 	Sleep(1000);
@@ -325,7 +325,7 @@ void show()                //æ˜¾ç¤ºæ“ä½œæ–¹æ³•å’Œæ¸¸æˆå¼€å§‹å€’è®¡æ—¶
 	gotoxy(hOut, 16, 5);
 	cout << ' ';
 }
-void gameover()              //æ¸¸æˆç»“æŸå‡½æ•°
+void gameover()              //ÓÎÏ·½áÊøº¯Êı
 {
 	system("cls");
 	system("color 3B");
