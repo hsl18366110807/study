@@ -18,22 +18,21 @@ using namespace std;
     void second() {
         
         std::unique_lock<std::mutex> lock(mutex_);
-    cond_.wait(lock, [&](){
+        cond_.wait(lock, [&](){
         return one_ok_;
-    });
-    // printSecond() outputs "second". Do not change or remove this line.
-      cout<<"_B";
-    two_ok_ = true;
-    cond_.notify_all();
+        });
+        // printSecond() outputs "second". Do not change or remove this line.
+		cout << "_B";
+		two_ok_ = true;
+		cond_.notify_all();
     }
 
     void third() {
-      std::unique_lock<std::mutex> lock(mutex_);
-    cond_.wait(lock, [&](){
-        return two_ok_;
-    });
-    // printThird() outputs "third". Do not change or remove this line.
-   cout<<"_C";
+		std::unique_lock<std::mutex> lock(mutex_);
+		cond_.wait(lock, [&]() {
+			return two_ok_;
+			});
+        cout<<"_C";
     }
  
 int main()
