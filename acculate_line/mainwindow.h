@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <qset.h>
+#include <qmap.h>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -39,6 +39,7 @@ private:
     int m_protect_count;
     QString m_filter_type;
     QString m_dir_path;
-    QSet<QString> m_file_type_set;
+//    QSet<QString> m_file_type_set;
+    QMap<QString, QString> m_file_type_map;
 };
 #endif // MAINWINDOW_H

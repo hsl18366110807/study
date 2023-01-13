@@ -88,7 +88,7 @@
    <widget class="QLineEdit" name="m_lineEdit_source_count">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>100</x>
       <y>530</y>
       <width>113</width>
       <height>20</height>
@@ -113,7 +113,7 @@
      <rect>
       <x>100</x>
       <y>120</y>
-      <width>291</width>
+      <width>681</width>
       <height>391</height>
      </rect>
     </property>
