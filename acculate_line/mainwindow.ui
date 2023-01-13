@@ -31,7 +31,7 @@
      <rect>
       <x>100</x>
       <y>30</y>
-      <width>69</width>
+      <width>131</width>
       <height>22</height>
      </rect>
     </property>
@@ -95,7 +95,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="m_button_begin">
+   <widget class="QPushButton" name="m_button_analyse">
     <property name="geometry">
      <rect>
       <x>670</x>
@@ -105,7 +105,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>开始</string>
+     <string>分析</string>
     </property>
    </widget>
    <widget class="QTextEdit" name="m_textEdit_files">
@@ -152,42 +152,6 @@
     </property>
     <property name="text">
      <string>选择文件夹</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>30</y>
-      <width>101</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>手动筛选文件类型</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="m_text_input_type">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>30</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="m_button_manul_filter">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>32</y>
-      <width>101</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>auto filter</string>
     </property>
    </widget>
   </widget>
