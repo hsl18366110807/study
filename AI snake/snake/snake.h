@@ -1,3 +1,4 @@
+#pragma once
 #include <ctime>
 #include <iostream>
 struct Snake
@@ -6,7 +7,7 @@ struct Snake
 };
 class snake {
 public:
-	snake(int x5,int y5,int x4,int y4,int x3,int y3,int x2,int y2,int x1,int y1,int x0,int y0) {  //构造函数
+	snake(int x5, int y5, int x4, int y4, int x3, int y3, int x2, int y2, int x1, int y1, int x0, int y0) {  //构造函数
 		length = 6;
 		s[5].x = x5;
 		s[5].y = y5;
@@ -23,7 +24,7 @@ public:
 		up = left = down = 0;
 		right = 1;
 	}
-	~snake(){}
+	~snake() {}
 	void display();                                    //显示蛇
 	void Rightmove();                                  //上下左右移动蛇
 	void Leftmove();
@@ -34,7 +35,7 @@ public:
 	int preCheakLeftmove();
 	int preCheakUpmove();
 	int preCheakDownmove();
-    std::string getstate();
+	std::string getstate();
 	int cheak();                                      //检查是否撞到墙或者自身
 	void creat_food();                                //产生实物
 	int eat_food();                                   //吃食物
