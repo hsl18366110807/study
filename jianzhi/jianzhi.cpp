@@ -20,6 +20,14 @@ int cuttingRope(int n){
      }
      return vec[n];
 }
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+
 bool jianyan(TreeNode* root, int val, bool flag){ //flag = true 左孩子
         if(root == nullptr) return true;
         if(flag){
