@@ -1,0 +1,4 @@
+  PID TTY           TIME CMD
+89050 ttys004    0:00.06 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server login -fp haoshengli
+89052 ttys004    0:02.13 -zsh
+38980 ttys009    0:04.48 /bin/zsh -il
